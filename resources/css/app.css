@@ -1,0 +1,48 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+    --primary-bold: theme(colors.fuchsia.500);
+    --primary-inactive: theme(colors.fuchsia.900);
+
+    --neutral-inactive: theme(colors.stone.500);
+    --neutral-surface: theme(colors.stone.950);
+
+    --text-color: theme(colors.white);
+}
+
+html,
+body {
+    background: var(--neutral-surface);
+    color: var(--text-color);
+}
+
+h1 {
+    color: var(--primary-bold);
+}
+
+button {
+    font-weight: bold;
+}
+
+a {
+    color: var(--primary-inactive);
+}
+
+a:hover {
+    color: var(--primary-bold);
+}
+
+* {
+    outline-width: 1px;
+    outline-color: var(--neutral-inactive);
+}
+
+*:hover {
+    outline-color: var(--primary-inactive);
+}
+
+hr {
+    border-color: var(--neutral-inactive);
+}

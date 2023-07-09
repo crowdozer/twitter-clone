@@ -1,0 +1,19 @@
+{
+    "private": true,
+    "type": "module",
+    "scripts": {
+        "build": "vite build",
+        "dev": "vite",
+        "serve": "concurrently \"cross-env BROWSER_SYNC=false php artisan serve\" \"npm run dev\""
+    },
+    "devDependencies": {
+        "autoprefixer": "^10.4.14",
+        "axios": "^1.1.2",
+        "concurrently": "^8.2.0",
+        "cross-env": "^7.0.3",
+        "laravel-vite-plugin": "^0.7.5",
+        "postcss": "^8.4.25",
+        "tailwindcss": "^3.3.2",
+        "vite": "^4.0.0"
+    }
+}
