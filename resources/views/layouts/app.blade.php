@@ -12,27 +12,12 @@
 </head>
 
 <body class="h-screen w-screen overflow-hidden bg-stone-950 text-white">
-    <div class="max-w-[1080px] mx-auto h-full">
+    <div class="max-w-[1024px] mx-auto h-full">
         <div class="flex flex-row h-full p-4">
             {{-- first column --}}
-            <header role="banner" class="w-[240px] pb-16">
-                <div class="flex flex-col gap-2 h-full">
-                    <h1 class="text-2xl font-bold">tweethub</h1>
-
-                    {{-- spacer --}}
-                    <div class="grow flex flex-col-reverse">
-                        <hr />
-                    </div>
-
-                    <div class="pr-4">
-                        <button
-                            class="self-center text-left p-2 w-full px-4 bg-transparent hover:outline rounded-full hover:text-fuchsia-400">
-                            <i class="fas fa-user mr-2"></i>
-                            Account
-                        </button>
-                    </div>
-                </div>
-            </header>
+            <div class="w-[240px] shrink-0 pb-16 pr-2">
+                <x-layout.header />
+            </div>
 
             {{-- second column --}}
             <main class="grow">
@@ -41,21 +26,16 @@
             </main>
 
             {{-- third column --}}
-            <div class="w-[240px] pb-16">
+            <div class="w-[240px] shrink-0 pb-16 pl-2">
 
                 <div class="flex flex-col gap-2 h-full">
-                    <input class="self-center bg-transparent hover:outline rounded-full p-1 px-4"
-                        placeholder="Search" />
 
                     {{-- spacer --}}
                     <div class="grow flex flex-col-reverse">
                         <hr />
                     </div>
 
-                    <footer class="pl-4">
-                        <a href="https://www.github.com/crowdozer">view on github</a>
-                        <p class="text-stone-500">(c) me never</p>
-                    </footer>
+                    <x-layout.footer />
                 </div>
             </div>
         </div>
