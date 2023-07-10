@@ -40,8 +40,8 @@ class Post extends Component
             'views'             => $this->post['views'],
             'posted_on'         => (new Carbon($this->post['posted_on']))->subDays(5)->diffForHumans(),
             'hashtags'          => $this->post['hashtags'],
-            'show_tags'         => false,
-            'show_views'        => false,
+            'show_tags'         => true,
+            'show_views'        => true,
         ]);
     }
 }

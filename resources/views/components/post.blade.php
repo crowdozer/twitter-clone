@@ -1,4 +1,4 @@
-<div id="{{ $scope }}" data-url="/post/{{ $id }}" class="pl-2 pr-4 py-4 cursor-pointer ">
+<div id="{{ $scope }}" data-url="/post/{{ $id }}" class="pl-2 py-4">
     <div class="flex flex-row gap-4">
         {{-- avatar --}}
         <a class="w-[48px] h-[48px] rounded-full overflow-hidden" href="/u/{{ $author_id }}">
@@ -9,11 +9,11 @@
         {{-- author --}}
         <div class="flex flex-col gap-0 -mt-1">
             <div>
-                <a href="/u/{{ $author_id }}" class="text-lg">
+                <a href="/u/{{ $author_id }}" class="text-lg text-white">
                     {{ $author }}
                 </a>
                 @if ($author_verified)
-                    <i class="fa-solid fa-circle-check text-sm align-top mt-1 text-stone-500"></i>
+                    <i class="fa-solid fa-circle-check text-sm align-top mt-1 ml-1 text-blue-500"></i>
                 @endif
             </div>
             <div class="text-stone-500 text-sm flex flex-row -mt-1">
@@ -32,7 +32,7 @@
 
     @if ($show_tags)
         @if (count($hashtags) >= 1)
-            <div class="text-sm">
+            <div class="text-sm my-2">
                 @foreach ($hashtags as $tag)
                     <a href="/topic/{{ $tag }}" class="text-stone-500 mr-1">
                         #{{ $tag }}

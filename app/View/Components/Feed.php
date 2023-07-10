@@ -5,7 +5,6 @@ namespace App\View\Components;
 use Closure;
 use Illuminate\Contracts\View\View;
 use Illuminate\View\Component;
-use Faker;
 
 class Feed extends Component
 {
@@ -19,7 +18,7 @@ class Feed extends Component
 
     private function test_tweet()
     {
-        $faker = Faker\Factory::create();
+        $faker = \Faker\Factory::create();
 
         return [
             'id'                => $faker->uuid(),

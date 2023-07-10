@@ -10,7 +10,7 @@
         <p class="text-stone-500 -mt-1">{{ '@' }}{{ $id }}</p>
     </div>
     <div class="shrink-0 w-[36px]">
-        <button class="bg-stone-800 w-[36px] h-[36px] self-center rounded-full ">
+        <button class="bg-stone-800 w-[36px] h-[36px] self-center rounded-full hover:bg-stone-700">
             <i class="fas fa-plus"></i>
         </button>
     </div>

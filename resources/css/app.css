@@ -18,6 +18,7 @@
 
 html,
 body {
+    cursor: default;
     background: var(--neutral-surface);
     color: var(--text-color);
 }
