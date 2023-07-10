@@ -19,7 +19,7 @@
         <div class="flex flex-col mt-4 mb-4">
             <x-whats-hot topic='TweetHub' activity='24M tweets' />
             <x-whats-hot topic='Crowdozer' activity='1.2M tweets' />
-            <x-whats-hot topic='Who is Crowdozer' activity='55K tweets' />
+            <x-whats-hot topic='"Who is Crowdozer"' activity='55K tweets' />
         </div>
     </div>
 @endif

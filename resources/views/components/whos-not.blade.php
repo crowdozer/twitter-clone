@@ -6,7 +6,7 @@
             style="width: 36px; height: 36px" />
     </a>
     <div class="grow">
-        <a class="-mt-1" href="/u/{{ $id }}">{{ $name }}</a>
+        <a class="-mt-1 text-white" href="/u/{{ $id }}">{{ $name }}</a>
         <p class="text-stone-500 -mt-1">{{ '@' }}{{ $id }}</p>
     </div>
     <div class="shrink-0 w-[36px]">
