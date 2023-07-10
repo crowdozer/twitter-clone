@@ -1,12 +1,10 @@
 @props(['id', 'name'])
 
 <div class="flex flex-row gap-4">
-    <div class="rounded-full overflow-hidden w-[36px] h-[36px] bg-red-500 self-center shrink-0 w-[36px]">
-        <a href="/u/{{ $id }}">
-            <img src="https://api.dicebear.com/6.x/bottts/svg?seed={{ $id }}" alt="avatar"
-                style="width: 36px; height: 36px" />
-        </a>
-    </div>
+    <a class="w-[36px] h-[36px] rounded-full overflow-hidden self-center" href="/u/{{ $id }}">
+        <img src="https://api.dicebear.com/6.x/bottts/svg?seed={{ $name }}" alt="avatar"
+            style="width: 36px; height: 36px" />
+    </a>
     <div class="grow">
         <a class="-mt-1" href="/u/{{ $id }}">{{ $name }}</a>
         <p class="text-stone-500 -mt-1">{{ '@' }}{{ $id }}</p>

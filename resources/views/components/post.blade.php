@@ -20,24 +20,30 @@
                 <span>{{ '@' }}{{ $author_id }}</span>
                 <span class="px-2">·</span>
                 <span>{{ $posted_on }}</span>
-                <span class="px-2">·</span>
-                <span><i class="far fa-eye self-center text-xs"></i> {{ number_format($views) }}</span>
+                @if ($show_views)
+                    <span class="px-2">·</span>
+                    <span><i class="far fa-eye self-center text-xs"></i> {{ number_format($views) }}</span>
+                @endif
             </div>
-            @if (count($hashtags) >= 1)
-                <div class="text-sm">
-                    @foreach ($hashtags as $tag)
-                        <a href="/topic/$tag" class="text-stone-500 mr-1">
-                            #{{ $tag }}
-                        </a>
-                    @endforeach
-                </div>
-            @endif
         </div>
     </div>
 
     <p class="mt-2 whitespace-pre-wrap">{{ $content }}</p>
 
-    <div class="grid grid-cols-3 rounded-full overflow-hidden mt-2">
+    @if ($show_tags)
+        @if (count($hashtags) >= 1)
+            <div class="text-sm">
+                @foreach ($hashtags as $tag)
+                    <a href="/topic/{{ $tag }}" class="text-stone-500 mr-1">
+                        #{{ $tag }}
+                    </a>
+                @endforeach
+            </div>
+        @endif
+    @endif
+
+
+    <div class="grid grid-cols-3 mt-2">
         <a href="/post/{{ $id }}" class="p-2 hover:bg-stone-900 text-center border-r border-stone-800">
             <i @class([
                 'mr-2 fa-comment',

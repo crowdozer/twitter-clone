@@ -5,6 +5,7 @@ namespace App\View\Components;
 use Closure;
 use Illuminate\Contracts\View\View;
 use Illuminate\View\Component;
+use Illuminate\Support\Carbon;
 
 class Post extends Component
 {
@@ -37,8 +38,10 @@ class Post extends Component
             'comments'          => $this->post['comments'],
             'commented'         => $this->post['user_commented'],
             'views'             => $this->post['views'],
-            'posted_on'         => $this->post['posted_on'],
+            'posted_on'         => (new Carbon($this->post['posted_on']))->subDays(5)->diffForHumans(),
             'hashtags'          => $this->post['hashtags'],
+            'show_tags'         => false,
+            'show_views'        => false,
         ]);
     }
 }

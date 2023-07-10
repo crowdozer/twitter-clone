@@ -5,7 +5,6 @@ namespace App\View\Components;
 use Closure;
 use Illuminate\Contracts\View\View;
 use Illuminate\View\Component;
-use Illuminate\Support\Carbon;
 use Faker;
 
 class Feed extends Component
@@ -35,9 +34,7 @@ class Feed extends Component
             'comments'          => $faker->numberBetween(0, 2000),
             'user_commented'    => $faker->boolean(),
             'views'             => $faker->numberBetween(0, 200000),
-            'posted_on'         => (new Carbon(
-                $faker->dateTimeThisYear('now')
-            ))->subDays(5)->diffForHumans(),
+            'posted_on'         => $faker->dateTimeThisYear('now'),
             'hashtags'          => $faker->words(),
         ];
     }
