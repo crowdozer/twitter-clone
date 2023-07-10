@@ -3,9 +3,17 @@
 @section('title', 'TweetHub')
 
 @section('content')
-    <div class="mx-auto max-w-4xl pr-4">
+    <div class="mx-auto max-w-4xl pr-4 relative">
         <x-post :post="$post" />
-        <x-make-reply :post="$post" />
+        @if (Auth::check())
+            <x-make-reply :post="$post" />
+        @endif
+        <hr />
+        <div class="sticky top-0 bg-stone-950">
+            <h1 class="text-xl text-stone-500 font-bold mt-4 mb-4">Replies to
+                {{ '@' }}{{ $post['author_id'] }}</h1>
+            <hr />
+        </div>
         <x-post-feed :posts="$replies" infinitescrollurl="/api/posts/{{ $post['id'] }}" />
     </div>
 @endsection

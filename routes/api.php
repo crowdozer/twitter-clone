@@ -46,7 +46,6 @@ Route::get('/posts/user/{id}', function (Request $request, string $id) {
     ]);
 });
 
-
 /**
  * viewing posts for a profile's likes
  */

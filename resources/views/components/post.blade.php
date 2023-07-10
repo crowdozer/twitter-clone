@@ -55,38 +55,64 @@
         </div>
     @endif
 
-    <div class="grid grid-cols-3 mt-2">
-        <a href="/post/{{ $id }}" class="p-2 hover:bg-stone-900 text-center border-r border-stone-800">
-            <i @class([
-                'mr-2 fa-comment',
-                'fas text-fuchsia-600' => $commented,
-                'far text-stone-500' => !$commented,
-            ])></i>
-            <span class="text-stone-500">
-                {{ number_format($comments) }}
-            </span>
-        </a>
+    @if (Auth::check())
+        <div class="grid grid-cols-3 mt-2">
+            <a href="/post/{{ $id }}" class="p-2 hover:bg-stone-900 text-center border-r border-stone-800">
+                <i @class([
+                    'mr-2 fa-comment',
+                    'fas text-fuchsia-600' => $commented,
+                    'far text-stone-500' => !$commented,
+                ])></i>
+                <span class="text-stone-500">
+                    {{ number_format($comments) }}
+                </span>
+            </a>
 
-        <button class="p-2 hover:bg-stone-900 text-center border-r border-stone-800">
-            <i @class([
-                'mr-2 fa fa-retweet',
-                'text-green-600' => $shared,
-                'text-stone-500' => !$shared,
-            ])></i>
-            <span class="text-stone-500">
-                {{ number_format($shares) }}
-            </span>
-        </button>
+            <button class="p-2 hover:bg-stone-900 text-center border-r border-stone-800">
+                <i @class([
+                    'mr-2 fa fa-retweet',
+                    'text-green-600' => $shared,
+                    'text-stone-500' => !$shared,
+                ])></i>
+                <span class="text-stone-500">
+                    {{ number_format($shares) }}
+                </span>
+            </button>
 
-        <button class="p-2 hover:bg-stone-900 text-center">
-            <i @class([
-                'mr-2 fa-heart',
-                'fas text-red-800' => $liked,
-                'far text-stone-500' => !$liked,
-            ])></i>
-            <span class="text-stone-500">
-                {{ number_format($likes) }}
-            </span>
-        </button>
-    </div>
+            <button class="p-2 hover:bg-stone-900 text-center">
+                <i @class([
+                    'mr-2 fa-heart',
+                    'fas text-red-800' => $liked,
+                    'far text-stone-500' => !$liked,
+                ])></i>
+                <span class="text-stone-500">
+                    {{ number_format($likes) }}
+                </span>
+            </button>
+        </div>
+    @else
+        <div class="grid grid-cols-3 mt-2">
+            <a href="/post/{{ $id }}" class="p-2 hover:bg-stone-900 text-center border-r border-stone-800">
+                <i class="mr-2 fa-comment far text-stone-500"></i>
+                <span class="text-stone-500">
+                    {{ number_format($comments) }}
+                </span>
+            </a>
+
+
+            <div class="p-2 cursor-not-allowed text-center border-r border-stone-800">
+                <i class="mr-2 fa fa-retweet text-stone-500"></i>
+                <span class="text-stone-500">
+                    {{ number_format($shares) }}
+                </span>
+            </div>
+
+            <div class="p-2 cursor-not-allowed text-center">
+                <i class="mr-2 fa-heart far text-stone-500"></i>
+                <span class="text-stone-500">
+                    {{ number_format($likes) }}
+                </span>
+            </div>
+        </div>
+    @endif
 </div>

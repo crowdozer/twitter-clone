@@ -14,7 +14,7 @@
         </div>
 
         {{-- name, sticky --}}
-        <div class="pl-8 bg-stone-950 sticky top-0 left-0 z-10">
+        <div class="     bg-stone-950 sticky top-0 left-0 z-10">
             <h1 class="mt-20 mb-4 text-3xl font-bold">
                 {{ $name }} <span
                     class="text-stone-500 font-normal text-xl">{{ '@' }}{{ $id }}</span>

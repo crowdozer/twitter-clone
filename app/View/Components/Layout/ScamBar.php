@@ -1,6 +1,6 @@
 <?php
 
-namespace App\View\Components;
+namespace App\View\Components\Layout;
 
 use Closure;
 use Illuminate\Contracts\View\View;
@@ -21,7 +21,7 @@ class ScamBar extends Component
      */
     public function render(): View|Closure|string
     {
-        return view('components.scam-bar', [
+        return view('components.layout.scam-bar', [
             'show_scam' => true,
             'show_hot' => true,
             'show_not' => true,

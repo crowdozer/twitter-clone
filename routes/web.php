@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Request;
+use Illuminate\Support\Facades\Auth;
 use App\Helpers\Functions;
 
 /*
@@ -10,7 +11,7 @@ use App\Helpers\Functions;
 |--------------------------------------------------------------------------
 |
 | Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider and all of them will
+| routes are  loaded by the RouteServiceProvider and all of them will
 | be assigned to the "web" middleware group. Make something great!
 |
 */
@@ -18,7 +19,11 @@ use App\Helpers\Functions;
 /**
  * Homepage
  */
-Route::get('/', function () {
+Route::get('/', function (Request $request) {
+    if (!Auth::check()) {
+        return redirect('/walled-garden');
+    }
+
     return view('scenes.homepage', [
         'posts' => Functions::generate_test_posts(10)
     ]);
@@ -75,4 +80,15 @@ Route::get('/u/{id}/{mode?}', function (Request $request, string $id, $mode = 't
     }
 
     return view('scenes.profile', $data);
+});
+
+/**
+ * Auth page
+ */
+Route::get('/walled-garden/{mode?}', function (Request $request, string $mode = 'login') {
+    if ($mode === 'sign-up') {
+        return view('scenes.walled-garden.sign-up');
+    }
+
+    return view('scenes.walled-garden.log-in');
 });

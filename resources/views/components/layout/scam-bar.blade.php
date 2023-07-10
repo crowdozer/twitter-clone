@@ -44,19 +44,4 @@
             </a>
         </div>
     </div>
-
-    {{-- <div class="p-4 rounded-xl bg-stone-900">
-        <h2 class="text-2xl font-bold">Who's Not™</h2>
-
-        <div class="flex flex-col gap-4 mt-4">
-            <x-whos-not id="lemonees" name="Lemonees" />
-            <x-whos-not id="zuck" name="The Zuck" />
-            <x-whos-not id="pete" name="Pete Zahead" />
-
-            <a class="hover:bg-stone-800 px-4 py-2 cursor-pointer" href="/connect" }}">
-                <p class="text-stone-500 text-sm">see more</p>
-            </a>
-
-        </div>
-    </div> --}}
 @endif
