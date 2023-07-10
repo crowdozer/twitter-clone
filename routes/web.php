@@ -25,8 +25,11 @@ Route::get('/post/{id}', function (Request $request, string $id) {
     $post = Functions::generate_test_posts(1)[0];
     $post['id'] = $id;
 
+    $replies = Functions::generate_test_posts(12);
+
     return view('scenes.post', [
-        'post' => $post
+        'post' => $post,
+        'replies' => $replies
     ]);
 });
 
@@ -36,4 +39,28 @@ Route::get('/topic/{topic}', function (Request $request, string $topic) {
         'catchphrase' => Functions::topics_catchphrase(),
         'posts' => Functions::generate_test_posts(12)
     ]);
+});
+
+Route::get('/u/{id}/{mode?}', function (Request $request, string $id, $mode = 'tweets') {
+    // initialize page-data with a profile
+    $data = Functions::generate_test_profile();
+
+    // add the id to the generated profile
+    $data['id'] = $id;
+
+    // add the feed render mode to page data
+    switch($mode) {
+        case 'replies':
+            $data['mode'] = 'replies';
+            break;
+        case 'likes':
+            $data['mode'] = 'likes';
+            break;
+        case 'tweets': // fall-through
+        default:
+            $data['mode'] = 'tweets';
+            break;
+    }
+
+    return view('scenes.profile', $data);
 });

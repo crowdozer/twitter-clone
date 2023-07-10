@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'Page Title')
+@section('title', 'TweetHub Topics')
 
 @section('content')
     <div class="mx-auto max-w-4xl pr-4">
@@ -11,20 +11,7 @@
             <h3 class="text-xl text-stone-500 font-bold mt-2">52K tweets in the past hour</h3>
         </div>
         <div class="mt-2">
-            <div class="flex flex-col">
-                @foreach ($posts as $post)
-                    <x-post :post="$post" />
-
-                    @if (!$loop->last)
-                        <hr />
-                    @endif
-
-                    {{-- advertisement time --}}
-                    @if (($loop->index + 1) % 5 == 0 && !$loop->first)
-                        <x-feed-advertisement />
-                    @endif
-                @endforeach
-            </div>
+            <x-post-feed :posts="$posts" />
         </div>
     </div>
 @endsection

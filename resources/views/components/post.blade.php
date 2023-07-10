@@ -24,6 +24,10 @@
                     <span class="px-2">·</span>
                     <span><i class="far fa-eye self-center text-xs"></i> {{ number_format($views) }}</span>
                 @endif
+                @if ($is_bot)
+                    <span class="px-2">·</span>
+                    <span><i class="fa fa-robot self-center text-xs"></i> droid</span>
+                @endif
             </div>
         </div>
     </div>

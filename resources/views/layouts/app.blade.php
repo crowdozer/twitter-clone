@@ -2,7 +2,7 @@
 <html>
 
 <head>
-    <title>TweetHub</title>
+    <title>@yield('title')</title>
 
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -33,7 +33,6 @@
 
             {{-- third column --}}
             <div class="w-[240px] shrink-0 pb-16 pl-2">
-
                 <div class="flex flex-col gap-2 h-full">
                     <x-scam-bar />
 

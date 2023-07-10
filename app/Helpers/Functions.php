@@ -29,10 +29,26 @@ class Functions
                 'views'             => $faker->numberBetween(0, 200000),
                 'posted_on'         => $faker->dateTimeThisYear('now'),
                 'hashtags'          => $faker->words(),
+                'is_bot'            => true
             ];
         }
 
         return $posts;
+    }
+
+    public static function generate_test_profile()
+    {
+        $faker = Faker::create();
+
+        return [
+            'name'      => $faker->name(),
+            'bio'       => $faker->sentence().'
+            
+'.$faker->sentence(2),
+            'joined'    => $faker->dateTimeThisDecade()->format('Y/m/d'),
+            'followers' => $faker->numberBetween(0, 50000),
+            'following' => $faker->numberBetween(0, 50000),
+        ];
     }
 
     /**
