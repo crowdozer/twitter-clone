@@ -7,14 +7,14 @@ use Illuminate\Support\Collection;
 
 class Functions
 {
-    public static function generate_test_posts(int $count = 1)
+    public static function generate_test_posts(int $count = 1, bool $images = true)
     {
         $faker = Faker::create();
 
         $posts = [];
 
         for ($n = 0; $n < $count; $n += 1) {
-            $posts[] = [
+            $post = [
                 'id'                => $faker->uuid(),
                 'author_id'         => $faker->userName(),
                 'author'            => $faker->name(),
@@ -29,8 +29,17 @@ class Functions
                 'views'             => $faker->numberBetween(0, 200000),
                 'posted_on'         => $faker->dateTimeThisYear('now'),
                 'hashtags'          => $faker->words(),
-                'is_bot'            => true
+                'is_bot'            => true,
+                'has_image'         => false,
+                '_img_id'           => ''
             ];
+
+            if ($images) {
+                $post['has_image'] = $faker->boolean();
+                $post['_img_id'] = $faker->numberBetween(1, 1000);
+            }
+
+            $posts[] = $post;
         }
 
         return $posts;

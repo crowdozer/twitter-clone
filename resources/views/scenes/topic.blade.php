@@ -11,7 +11,7 @@
             <h3 class="text-xl text-stone-500 font-bold mt-2">52K tweets in the past hour</h3>
         </div>
         <div class="mt-2">
-            <x-post-feed :posts="$posts" />
+            <x-post-feed :posts="$posts" infinitescrollurl="/api/posts/topic/{{ $topic }}" />
         </div>
     </div>
 @endsection

@@ -15,17 +15,23 @@ use App\Helpers\Functions;
 |
 */
 
+/**
+ * Homepage
+ */
 Route::get('/', function () {
     return view('scenes.homepage', [
-        'posts' => Functions::generate_test_posts(12)
+        'posts' => Functions::generate_test_posts(10)
     ]);
 });
 
+/**
+ * Viewing a post/replying
+ */
 Route::get('/post/{id}', function (Request $request, string $id) {
     $post = Functions::generate_test_posts(1)[0];
     $post['id'] = $id;
 
-    $replies = Functions::generate_test_posts(12);
+    $replies = Functions::generate_test_posts(10, false);
 
     return view('scenes.post', [
         'post' => $post,
@@ -33,14 +39,20 @@ Route::get('/post/{id}', function (Request $request, string $id) {
     ]);
 });
 
+/**
+ * Viewing a topic
+ */
 Route::get('/topic/{topic}', function (Request $request, string $topic) {
     return view('scenes.topic', [
         'topic' => $topic,
         'catchphrase' => Functions::topics_catchphrase(),
-        'posts' => Functions::generate_test_posts(12)
+        'posts' => Functions::generate_test_posts(10)
     ]);
 });
 
+/**
+ * Viewing a profile
+ */
 Route::get('/u/{id}/{mode?}', function (Request $request, string $id, $mode = 'tweets') {
     // initialize page-data with a profile
     $data = Functions::generate_test_profile();

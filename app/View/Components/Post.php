@@ -42,7 +42,9 @@ class Post extends Component
             'hashtags'          => $this->post['hashtags'],
             'show_tags'         => true,
             'show_views'        => true,
-            'is_bot'            => $this->post['is_bot']
+            'is_bot'            => $this->post['is_bot'],
+            'has_image'         => $this->post['has_image'],
+            '_img_id'           => $this->post['_img_id'],
         ]);
     }
 }

@@ -9,7 +9,7 @@
             <x-make-reply />
         </div>
         <div class="mt-2">
-            <x-post-feed :posts="$posts" />
+            <x-post-feed :posts="$posts" infinitescrollurl="/api/posts" />
         </div>
     </div>
 @endsection

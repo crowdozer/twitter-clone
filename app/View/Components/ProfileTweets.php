@@ -26,7 +26,7 @@ class ProfileTweets extends Component
      */
     public function render(): View|Closure|string
     {
-        $tweets = Functions::generate_test_posts(12);
+        $tweets = Functions::generate_test_posts(10);
 
         foreach ($tweets as $key => $tweet) {
             $tweets[$key]['author_id'] = $this->id;
@@ -38,7 +38,8 @@ class ProfileTweets extends Component
         });
 
         return view('components.profile-tweets', [
-            'tweets' => $tweets
+            'tweets'    => $tweets,
+            'id'        => $this->id,
         ]);
     }
 }

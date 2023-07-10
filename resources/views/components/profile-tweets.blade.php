@@ -1,1 +1,1 @@
-<x-post-feed :posts="$tweets" />
+<x-post-feed :posts="$tweets" infinitescrollurl="/api/posts/user/{{ $id }}" />

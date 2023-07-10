@@ -34,6 +34,7 @@
 
     <p class="mt-2 whitespace-pre-wrap">{{ $content }}</p>
 
+
     @if ($show_tags)
         @if (count($hashtags) >= 1)
             <div class="text-sm my-2">
@@ -46,6 +47,13 @@
         @endif
     @endif
 
+    @if ($has_image)
+        <div class="p-4">
+            <div class="rounded-xl w-full overflow-hidden min-h-[440px] bg-stone-900">
+                <img src="https://picsum.photos/id/{{ $_img_id }}/480/480" loading="lazy" />
+            </div>
+        </div>
+    @endif
 
     <div class="grid grid-cols-3 mt-2">
         <a href="/post/{{ $id }}" class="p-2 hover:bg-stone-900 text-center border-r border-stone-800">

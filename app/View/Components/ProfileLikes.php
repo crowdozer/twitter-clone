@@ -26,7 +26,7 @@ class ProfileLikes extends Component
      */
     public function render(): View|Closure|string
     {
-        $likes = Functions::generate_test_posts(12);
+        $likes = Functions::generate_test_posts(10);
 
         return view('components.profile-likes', [
             'likes' => $likes
