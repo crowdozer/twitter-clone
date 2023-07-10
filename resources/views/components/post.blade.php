@@ -41,7 +41,7 @@
         <a href="/post/{{ $id }}" class="p-2 hover:bg-stone-900 text-center border-r border-stone-800">
             <i @class([
                 'mr-2 fa-comment',
-                'fas text-blue-600' => $commented,
+                'fas text-fuchsia-600' => $commented,
                 'far text-stone-500' => !$commented,
             ])></i>
             <span class="text-stone-500">

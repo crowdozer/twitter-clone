@@ -1,3 +1,5 @@
+@props(['id', 'name'])
+
 <div class="flex flex-row gap-4">
     <div class="rounded-full overflow-hidden w-[36px] h-[36px] bg-red-500 self-center shrink-0 w-[36px]">
         <a href="/u/{{ $id }}">
