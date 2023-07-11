@@ -32,8 +32,10 @@ Route::get('/posts/user/{id}', function (Request $request, string $id) {
     $tweets = Functions::generate_test_posts(10);
 
     foreach ($tweets as $key => $tweet) {
-        $tweets[$key]['author_id'] = $id;
-        $tweets[$key]['author'] = "oops";
+        // Can't do this until user auth works
+        //
+        // $tweets[$key]['author_id'] = $id;
+        // $tweets[$key]['author'] = "oops";
     }
 
     usort($tweets, function ($a, $b) {

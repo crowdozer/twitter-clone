@@ -2,41 +2,38 @@
 
 namespace App\Helpers;
 
-use Faker\Factory as Faker;
 use Illuminate\Support\Collection;
 
 class Functions
 {
     public static function generate_test_posts(int $count = 1, bool $images = true)
     {
-        $faker = Faker::create();
-
         $posts = [];
 
         for ($n = 0; $n < $count; $n += 1) {
             $post = [
-                'id'                => $faker->uuid(),
-                'author_id'         => $faker->userName(),
-                'author'            => $faker->name(),
-                'author_verified'   => $faker->boolean(),
-                'content'           => $faker->text(),
-                'likes'             => $faker->numberBetween(0, 200),
-                'user_liked'        => $faker->boolean(),
-                'shares'            => $faker->numberBetween(0, 500),
-                'user_shared'       => $faker->boolean(),
-                'comments'          => $faker->numberBetween(0, 2000),
-                'user_commented'    => $faker->boolean(),
-                'views'             => $faker->numberBetween(0, 200000),
-                'posted_on'         => $faker->dateTimeThisYear('now'),
-                'hashtags'          => $faker->words(),
+                'id'                => fake()->uuid(),
+                'author_id'         => fake()->userName(),
+                'author'            => fake()->name(),
+                'author_verified'   => fake()->boolean(),
+                'content'           => fake()->text(),
+                'likes'             => fake()->numberBetween(0, 200),
+                'user_liked'        => fake()->boolean(),
+                'shares'            => fake()->numberBetween(0, 500),
+                'user_shared'       => fake()->boolean(),
+                'comments'          => fake()->numberBetween(0, 2000),
+                'user_commented'    => fake()->boolean(),
+                'views'             => fake()->numberBetween(0, 200000),
+                'posted_on'         => fake()->dateTimeThisYear('now'),
+                'hashtags'          => fake()->words(),
                 'is_bot'            => true,
                 'has_image'         => false,
                 '_img_id'           => ''
             ];
 
             if ($images) {
-                $post['has_image'] = $faker->boolean();
-                $post['_img_id'] = $faker->numberBetween(1, 1000);
+                $post['has_image'] = fake()->boolean();
+                $post['_img_id'] = fake()->numberBetween(1, 1000);
             }
 
             $posts[] = $post;
@@ -47,16 +44,14 @@ class Functions
 
     public static function generate_test_profile()
     {
-        $faker = Faker::create();
-
         return [
-            'name'      => $faker->name(),
-            'bio'       => $faker->sentence().'
+            'name'      => fake()->name(),
+            'bio'       => fake()->sentence().'
             
-'.$faker->sentence(2),
-            'joined'    => $faker->dateTimeThisDecade()->format('Y/m/d'),
-            'followers' => $faker->numberBetween(0, 50000),
-            'following' => $faker->numberBetween(0, 50000),
+'.fake()->sentence(2),
+            'joined'    => fake()->dateTimeThisDecade()->format('Y/m/d'),
+            'followers' => fake()->numberBetween(0, 50000),
+            'following' => fake()->numberBetween(0, 50000),
         ];
     }
 

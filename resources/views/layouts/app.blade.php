@@ -56,9 +56,8 @@
                                 <h2 class="text-2xl font-bold">Sign Up</h2>
                                 <p class="mt-4">Make an account so we hit our quota! It's free!</p>
                                 <div class="mt-6">
-                                    <a href="/sign-up"
-                                        class="p-2 px-4 cursor-pointer rounded-full bg-fuchsia-600 hover:bg-fuchsia-700 active:bg-fuchsia-800  text-white hover:text-white"
-                                        onclick="window.alert('(Judgement) come on, man')">
+                                    <a href="/walled-garden/sign-up"
+                                        class="p-2 px-4 cursor-pointer rounded-full bg-fuchsia-600 hover:bg-fuchsia-700 active:bg-fuchsia-800  text-white hover:text-white">
                                         <span class="line-through">scam me</span> sign up
                                     </a>
                                 </div>
