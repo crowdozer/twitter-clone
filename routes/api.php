@@ -1,7 +1,7 @@
 <?php
 
 use App\Helpers\Functions;
-use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -16,64 +16,32 @@ use Illuminate\Support\Facades\Route;
 */
 
 /**
- * viewing posts for general feed
+ * AUTH ENDPOINTS
  */
-Route::get('/posts', function (Request $request) {
-    return view('components.post-feed', [
-        'posts' => Functions::generate_test_posts(10),
-        'infinitescrollurl' => '/api/posts'
-    ]);
+
+Route::post('auth/log-in', [\App\Http\Controllers\Auth\LogInController::class, 'post_log_in']);
+Route::post('auth/sign-up', [\App\Http\Controllers\Auth\SignUpController::class, 'post_sign_up']);
+Route::get('auth/log-out', function () {
+    Auth::logout();
+
+    return Functions::htmx_redirect('/walled-garden');
 });
 
 /**
- * viewing posts for a profile
+ * POST INFINITESCROLL ENDPOINTS
  */
-Route::get('/posts/user/{id}', function (Request $request, string $id) {
-    $tweets = Functions::generate_test_posts(10);
 
-    foreach ($tweets as $key => $tweet) {
-        // Can't do this until user auth works
-        //
-        // $tweets[$key]['author_id'] = $id;
-        // $tweets[$key]['author'] = "oops";
-    }
+// PROFILE LIKES
+Route::get('/posts/user/{id}/likes', [\App\Http\Controllers\PostController::class, 'render_likes']);
 
-    usort($tweets, function ($a, $b) {
-        return $b['posted_on'] <=> $a['posted_on'];
-    });
+// PROFILE TWEETS
+Route::get('/posts/user/{id}/{name}', [\App\Http\Controllers\ProfileController::class, 'render_tweets']);
 
-    return view('components.post-feed', [
-        'posts' => $tweets,
-        'infinitescrollurl' => "/api/posts/user/$id"
-    ]);
-});
+// TOPIC
+Route::get('/posts/topic/{topic}', [\App\Http\Controllers\TopicController::class, 'render_more']);
 
-/**
- * viewing posts for a profile's likes
- */
-Route::get('/posts/user/{id}/likes', function (Request $request, string $id) {
-    return view('components.post-feed', [
-        'posts' => Functions::generate_test_posts(10),
-        'infinitescrollurl' => "/api/posts/user/$id/likes"
-    ]);
-});
+// POST REPLIES
+Route::get('/posts/{id}', [\App\Http\Controllers\PostController::class, 'render_more']);
 
-/**
- * viewing replies to a post
- */
-Route::get('/posts/{id}', function (Request $request, string $id) {
-    return view('components.post-feed', [
-        'posts' => Functions::generate_test_posts(10, false),
-        'infinitescrollurl' => "/api/posts/$id"
-    ]);
-});
-
-/**
- * viewing posts related to a topic
- */
-Route::get('/posts/topic/{topic}', function (Request $request, string $topic) {
-    return view('components.post-feed', [
-        'posts' => Functions::generate_test_posts(10),
-        'infinitescrollurl' => "/api/posts/topic/$topic"
-    ]);
-});
+// GENERIC FEED
+Route::get('/posts', [\App\Http\Controllers\HomepageController::class, 'render_more']);

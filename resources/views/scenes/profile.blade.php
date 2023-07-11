@@ -4,9 +4,9 @@
 
 @section('content')
     <div class="relative mx-auto max-w-4xl pr-4">
-
         {{-- banner/pic --}}
-        <div class="h-[200px] bg-stone-800 relative">
+        <div class="h-[200px] bg-stone-800 relative"
+            style="background-image: url(https://picsum.photos/id/{{ $_banner_img }}/480/200); background-size: cover;">
             <div
                 class="absolute -bottom-16 left-8 w-32 h-32 rounded-full bg-stone-950 border-stone-950 border-8 overflow-hidden">
                 <img src="https://api.dicebear.com/6.x/bottts/svg?seed={{ $name }}" alt="avatar" class="w-32 h-32" />

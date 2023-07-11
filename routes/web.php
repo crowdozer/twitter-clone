@@ -1,9 +1,6 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use Illuminate\Support\Facades\Request;
-use Illuminate\Support\Facades\Auth;
-use App\Helpers\Functions;
 
 /*
 |--------------------------------------------------------------------------
@@ -16,79 +13,18 @@ use App\Helpers\Functions;
 |
 */
 
-/**
- * Homepage
- */
-Route::get('/', function (Request $request) {
-    if (!Auth::check()) {
-        return redirect('/walled-garden');
-    }
+// HOMEPAGE
+Route::get('/', [\App\Http\Controllers\HomepageController::class, 'render']);
 
-    return view('scenes.homepage', [
-        'posts' => Functions::generate_test_posts(10)
-    ]);
-});
+// REPLY TO POST PAGE
+Route::get('/post/{id}', [\App\Http\Controllers\PostController::class, 'render']);
 
-/**
- * Viewing a post/replying
- */
-Route::get('/post/{id}', function (Request $request, string $id) {
-    $post = Functions::generate_test_posts(1)[0];
-    $post['id'] = $id;
+// TOPIC POSTFEED
+Route::get('/topic/{topic}', [\App\Http\Controllers\TopicController::class, 'render']);
 
-    $replies = Functions::generate_test_posts(10, false);
+// USER PROFILE
+Route::get('/u/{id}/{mode?}', [\App\Http\Controllers\ProfileController::class, 'render_profile']);
 
-    return view('scenes.post', [
-        'post' => $post,
-        'replies' => $replies
-    ]);
-});
-
-/**
- * Viewing a topic
- */
-Route::get('/topic/{topic}', function (Request $request, string $topic) {
-    return view('scenes.topic', [
-        'topic' => $topic,
-        'catchphrase' => Functions::topics_catchphrase(),
-        'posts' => Functions::generate_test_posts(10)
-    ]);
-});
-
-/**
- * Viewing a profile
- */
-Route::get('/u/{id}/{mode?}', function (Request $request, string $id, $mode = 'tweets') {
-    // initialize page-data with a profile
-    $data = Functions::generate_test_profile();
-
-    // add the id to the generated profile
-    $data['id'] = $id;
-
-    // add the feed render mode to page data
-    switch($mode) {
-        case 'replies':
-            $data['mode'] = 'replies';
-            break;
-        case 'likes':
-            $data['mode'] = 'likes';
-            break;
-        case 'tweets': // fall-through
-        default:
-            $data['mode'] = 'tweets';
-            break;
-    }
-
-    return view('scenes.profile', $data);
-});
-
-/**
- * Auth page
- */
-Route::get('/walled-garden/{mode?}', function (Request $request, string $mode = 'login') {
-    if ($mode === 'sign-up') {
-        return view('scenes.walled-garden.sign-up');
-    }
-
-    return view('scenes.walled-garden.log-in');
-});
+// AUTH ROUTES
+Route::get('/walled-garden/sign-up', [\App\Http\Controllers\Auth\SignUpController::class, 'render']);
+Route::get('/walled-garden', [\App\Http\Controllers\Auth\LogInController::class, 'render']);

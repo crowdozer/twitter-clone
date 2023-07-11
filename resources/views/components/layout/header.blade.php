@@ -53,10 +53,20 @@
         </div>
 
         @if (Auth::check())
-            <button
+            <a href="/u/{{ Auth::user()->username }}"
+                class="self-center text-left p-2 w-full px-4 bg-transparent hover:bg-stone-900 rounded-full text-white hover:text-white">
+                <span class="text-stone-500">
+                    as {{ '@' }}
+                </span>
+                <span class="font-bold -ml-1">
+                    {{ Auth::user()->username }}
+                </span>
+            </a>
+
+            <button hx-trigger="click" hx-get="/api/auth/log-out"
                 class="self-center text-left p-2 w-full px-4 bg-transparent hover:outline rounded-full hover:text-fuchsia-400">
-                <i class="fas fa-user mr-2"></i>
-                Account
+                <i class="fas fa-right-from-bracket mr-2"></i>
+                Log Out
             </button>
         @else
             <button

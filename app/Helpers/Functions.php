@@ -2,6 +2,7 @@
 
 namespace App\Helpers;
 
+use Illuminate\Http\Response;
 use Illuminate\Support\Collection;
 
 class Functions
@@ -33,7 +34,7 @@ class Functions
 
             if ($images) {
                 $post['has_image'] = fake()->boolean();
-                $post['_img_id'] = fake()->numberBetween(1, 1000);
+                $post['_img_id'] = fake()->numberBetween(1, 420);
             }
 
             $posts[] = $post;
@@ -107,5 +108,15 @@ class Functions
             'No surplus words or unnecessary actions. - Marcus Aurelius',
             'People find pleasure in different ways. I find it in keeping my mind clear. - Marcus Aurelius',
         ])->random();
+    }
+
+    /**
+     * Creates an htmx redirect as a response & returns the response
+     */
+    public static function htmx_redirect(string $to = '/'): Response
+    {
+        $response = new Response();
+        $response->header('HX-redirect', $to);
+        return $response;
     }
 }

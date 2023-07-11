@@ -10,8 +10,10 @@
             <h2 class="text-lg font-bold m-0 text-center mb-8">Look who came crawling back</h2>
             <div class="border border-stone-500 rounded-2xl p-8">
                 <h2 class="text-lg font-bold mb-4">Log in to continue</h2>
-                <form action="/api/auth/log-in" method="post">
+                <form hx-post="/api/auth/log-in" hx-trigger="submit" hx-target="#login-output">
+                    @csrf
                     <div class="flex flex-col gap-4">
+                        {{-- inputs --}}
                         <div>
                             <label for="login-username" class="text-stone-500">username</label>
                             <input id="login-username" class="w-full px-4 py-2 rounded-full" placeholder="@username"
@@ -22,7 +24,12 @@
                             <input id="login-password" class="w-full px-4 py-2 rounded-full" placeholder="password"
                                 type="password" name="password" required />
                         </div>
-                        <div class="flex flex-col gap-2 mt-4">
+
+                        {{-- message to flash output --}}
+                        <div id="login-output"></div>
+
+                        {{-- controls --}}
+                        <div class="flex flex-col gap-2">
                             <button type="submit"
                                 class="w-full px-4 py-2 rounded-full bg-fuchsia-600 hover:bg-fuchsia-700 active:bg-fuchsia-800">
                                 Log In
