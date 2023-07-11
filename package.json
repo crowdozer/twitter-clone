@@ -4,7 +4,7 @@
     "scripts": {
         "build": "vite build",
         "dev": "vite",
-        "serve": "concurrently \"cross-env BROWSER_SYNC=false php artisan serve\" \"npm run dev\""
+        "serve": "concurrently \"cross-env BROWSER_SYNC=false ./vendor/bin/sail up\" \"npm run dev\""
     },
     "devDependencies": {
         "autoprefixer": "^10.4.14",
