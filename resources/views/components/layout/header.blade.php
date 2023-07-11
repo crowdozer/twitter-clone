@@ -10,19 +10,20 @@
             <div class="mt-8 flex flex-col gap-2">
                 <h2 class="font-bold text-lg">Feeds</h2>
 
-                <button class="w-full rounded-full text-left p-2 px-4 bg-fuchsia-950 hover:bg-fuchsia-900">
+                <button class="w-full rounded-full text-left p-2 px-4 bg-fuchsia-950 hover:bg-fuchsia-900"
+                    aria-label="trendy topics feed">
                     <i class="fas fa-arrow-trend-up mr-1 self-center w-8 text-center"></i>
                     Trendy
                 </button>
 
                 <button class="w-full rounded-full text-left p-2 px-4 bg-none border text-stone-500 border-stone-800"
-                    disabled>
+                    aria-label="following feed" disabled>
                     <i class="fa-solid fa-magnifying-glass w-8 text-center"></i>
                     Following
                 </button>
 
                 <button class="w-full rounded-full text-left p-2 px-4 bg-none border text-stone-500 border-stone-800"
-                    disabled>
+                    aria-label="followers feed" disabled>
                     <i class="fas fa-users mr-1 self-center  w-8 text-center"></i>
                     Followers
                 </button>
@@ -35,7 +36,7 @@
                 @endforeach
 
                 <button class="w-full rounded-full text-left p-2 px-4 bg-none border text-stone-500 border-stone-800"
-                    disabled>
+                    aria-label="add new feed" disabled>
                     <i class="fas fa-plus mr-1 self-center w-8 text-center"></i>
                     New Feed
                 </button>
@@ -63,13 +64,13 @@
                 </span>
             </a>
 
-            <button hx-trigger="click" hx-get="/api/auth/log-out"
+            <button aria-label="log out" hx-trigger="click" hx-get="/api/auth/log-out"
                 class="self-center text-left p-2 w-full px-4 bg-transparent hover:outline rounded-full hover:text-fuchsia-400">
                 <i class="fas fa-right-from-bracket mr-2"></i>
                 Log Out
             </button>
         @else
-            <button
+            <button aria-label="log in"
                 class="self-center text-left p-2 w-full px-4 bg-transparent hover:outline rounded-full hover:text-fuchsia-400">
                 <i class="fas fa-user-circle mr-2"></i>
                 Log In

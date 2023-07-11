@@ -14,6 +14,7 @@ class ProfileController extends Controller
 
         // add the id to the generated profile
         $data['id'] = $id;
+        $data['username'] = $id;
         $data['mode'] = $mode;
         $data['_banner_img'] = fake()->numberBetween(1, 500);
 

@@ -2,7 +2,7 @@
     <div class="flex flex-row gap-4">
         {{-- avatar --}}
         <a class="w-[48px] h-[48px] rounded-full overflow-hidden" href="/u/{{ $author_id }}">
-            <img src="https://api.dicebear.com/6.x/bottts/svg?seed={{ $author }}" alt="avatar"
+            <img src="https://api.dicebear.com/6.x/bottts/svg?seed={{ $author_id }}" alt="avatar"
                 style="width: 48px; height: 48px" />
         </a>
 
@@ -50,14 +50,15 @@
     @if ($has_image)
         <div class="p-4">
             <div class="rounded-xl w-full overflow-hidden min-h-[440px] bg-stone-900">
-                <img src="https://picsum.photos/id/{{ $_img_id }}/480/480" loading="lazy" />
+                <img src="https://picsum.photos/id/{{ $_img_id }}/480/480" loading="lazy" alt="Tweet Media" />
             </div>
         </div>
     @endif
 
     @if (Auth::check())
         <div class="grid grid-cols-3 mt-2">
-            <a href="/post/{{ $id }}" class="p-2 hover:bg-stone-900 text-center border-r border-stone-800">
+            <a href="/post/{{ $id }}" aria-label="view tweet comments or comment"
+                class="p-2 hover:bg-stone-900 text-center border-r border-stone-800">
                 <i @class([
                     'mr-2 fa-comment',
                     'fas text-fuchsia-600' => $commented,
@@ -68,7 +69,7 @@
                 </span>
             </a>
 
-            <button class="p-2 hover:bg-stone-900 text-center border-r border-stone-800">
+            <button aria-label="share tweet" class="p-2 hover:bg-stone-900 text-center border-r border-stone-800">
                 <i @class([
                     'mr-2 fa fa-retweet',
                     'text-green-600' => $shared,
@@ -79,7 +80,7 @@
                 </span>
             </button>
 
-            <button class="p-2 hover:bg-stone-900 text-center">
+            <button class="p-2 hover:bg-stone-900 text-center" aria-label="like tweet">
                 <i @class([
                     'mr-2 fa-heart',
                     'fas text-red-800' => $liked,
@@ -92,7 +93,8 @@
         </div>
     @else
         <div class="grid grid-cols-3 mt-2">
-            <a href="/post/{{ $id }}" class="p-2 hover:bg-stone-900 text-center border-r border-stone-800">
+            <a href="/post/{{ $id }}" aria-label="view tweet comments"
+                class="p-2 hover:bg-stone-900 text-center border-r border-stone-800">
                 <i class="mr-2 fa-comment far text-stone-500"></i>
                 <span class="text-stone-500">
                     {{ number_format($comments) }}

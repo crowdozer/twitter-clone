@@ -3,7 +3,7 @@
     <div class="p-4 rounded-xl bg-stone-900">
         <h2 class="text-2xl font-bold">Get Verified</h2>
         <p class="mt-4">It's a scam but you'll unlock paywalled™ features</p>
-        <button class="p-2 bg-fuchsia-600 hover:bg-fuchsia-700 cursor-pointer rounded-full mt-6 px-4"
+        <button class="p-2 bg-fuchsia-600 hover:bg-fuchsia-700 cursor-pointer rounded-full mt-6 px-4" aria-label="scam me"
             onclick="window.alert('(Judgement) come on, man')">
             scam me
         </button>

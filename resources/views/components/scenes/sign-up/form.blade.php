@@ -58,11 +58,11 @@
 
         {{-- controls --}}
         <div class="flex flex-col gap-2">
-            <button type="submit"
+            <button type="submit" aria-label="register and sign in"
                 class="w-full px-4 py-2 rounded-full bg-fuchsia-600 hover:bg-fuchsia-700 active:bg-fuchsia-800">
                 Let me in!
             </button>
-            <a href="/walled-garden"
+            <a href="/walled-garden" aria-label="go to login page"
                 class="w-full px-4 py-2 rounded-full bg-stone-600 hover:bg-stone-700 active:bg-stone-800 text-white hover:text-white text-center font-bold">
                 I have an account
             </a>

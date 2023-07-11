@@ -30,11 +30,11 @@
 
                         {{-- controls --}}
                         <div class="flex flex-col gap-2">
-                            <button type="submit"
+                            <button type="submit" aria-label="log in"
                                 class="w-full px-4 py-2 rounded-full bg-fuchsia-600 hover:bg-fuchsia-700 active:bg-fuchsia-800">
                                 Log In
                             </button>
-                            <a href="/walled-garden/sign-up"
+                            <a href="/walled-garden/sign-up" aria-label="go to register account page"
                                 class="w-full px-4 py-2 rounded-full bg-stone-600 hover:bg-stone-700 active:bg-stone-800 text-white hover:text-white text-center font-bold">
                                 I'm new here
                             </a>
