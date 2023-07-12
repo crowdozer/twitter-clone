@@ -34,7 +34,6 @@
 
     <p class="mt-2 whitespace-pre-wrap">{{ $content }}</p>
 
-
     @if ($show_tags)
         @if (count($hashtags) >= 1)
             <div class="text-sm my-2">
@@ -58,7 +57,7 @@
     @if (Auth::check())
         <div class="grid grid-cols-3 mt-2">
             <a href="/post/{{ $id }}" aria-label="view tweet comments or comment"
-                class="p-2 hover:bg-stone-900 text-center border-r border-stone-800">
+                class="post-comment-button p-2 hover:bg-stone-900 text-center border-r border-stone-800">
                 <i @class([
                     'mr-2 fa-comment',
                     'fas text-fuchsia-600' => $commented,
@@ -69,27 +68,8 @@
                 </span>
             </a>
 
-            <button aria-label="share tweet" class="p-2 hover:bg-stone-900 text-center border-r border-stone-800">
-                <i @class([
-                    'mr-2 fa fa-retweet',
-                    'text-green-600' => $shared,
-                    'text-stone-500' => !$shared,
-                ])></i>
-                <span class="text-stone-500">
-                    {{ number_format($shares) }}
-                </span>
-            </button>
-
-            <button class="p-2 hover:bg-stone-900 text-center" aria-label="like tweet">
-                <i @class([
-                    'mr-2 fa-heart',
-                    'fas text-red-800' => $liked,
-                    'far text-stone-500' => !$liked,
-                ])></i>
-                <span class="text-stone-500">
-                    {{ number_format($likes) }}
-                </span>
-            </button>
+            <x-post-share-button :shared="$shared" :shares="$shares" :scope="$scope" />
+            <x-post-like-button :liked="$liked" :likes="$likes" :scope="$scope" />
         </div>
     @else
         <div class="grid grid-cols-3 mt-2">
@@ -100,7 +80,6 @@
                     {{ number_format($comments) }}
                 </span>
             </a>
-
 
             <div class="p-2 cursor-not-allowed text-center border-r border-stone-800">
                 <i class="mr-2 fa fa-retweet text-stone-500"></i>

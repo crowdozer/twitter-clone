@@ -21,67 +21,65 @@
             </h1>
         </div>
 
-        <div class="relative">
-            {{-- stats --}}
-            <div class="lg:ml-8">
-                <p class="text-white whitespace-pre-wrap">{{ $bio }}</p>
+        {{-- stats --}}
+        <div>
+            <p class="text-white whitespace-pre-wrap">{{ $bio }}</p>
 
-                <p class="mt-4 text-stone-500"><i class="fas fa-calendar-alt mr-1"></i> {{ $joined }}</p>
+            <p class="mt-4 text-stone-500"><i class="fas fa-calendar-alt mr-1"></i> {{ $joined }}</p>
 
-                <div class="flex flex-row gap-4 mt-4">
-                    <span>
-                        <span class="font-bold">{{ number_format($followers) }}</span>
-                        <span class="text-stone-500">Followers</span>
-                    </span>
-                    <span>
-                        <span class="font-bold">{{ number_format($following) }}</span>
-                        <span class="text-stone-500">Following</span>
-                    </span>
+            <div class="flex flex-row gap-4 mt-4">
+                <span>
+                    <span class="font-bold">{{ number_format($followers) }}</span>
+                    <span class="text-stone-500">Followers</span>
+                </span>
+                <span>
+                    <span class="font-bold">{{ number_format($following) }}</span>
+                    <span class="text-stone-500">Following</span>
+                </span>
+            </div>
+        </div>
+
+        {{-- feed --}}
+        <div class="mt-4 relative">
+            <hr class="mt-4" />
+
+            {{-- controls, sticky --}}
+            <div class="bg-stone-950 pt-4">
+                <div class="flex flex-row gap-4">
+                    <a href="/u/{{ $id }}/tweets" @class([
+                        'px-4 py-2 text-sm rounded-full font-bold text-white hover:text-white',
+                        'bg-stone-900 hover:bg-fuchsia-600 active:bg-fuchsia-700' =>
+                            $mode !== 'tweets',
+                        'bg-fuchsia-600' => $mode === 'tweets',
+                    ])>Tweets</a>
+
+                    <a href="/u/{{ $id }}/replies" @class([
+                        'px-4 py-2 text-sm rounded-full font-bold text-white hover:text-white',
+                        'bg-stone-900 hover:bg-fuchsia-600 active:bg-fuchsia-700' =>
+                            $mode !== 'replies',
+                        'bg-fuchsia-600' => $mode === 'replies',
+                    ])>Replies</a>
+
+                    <a href="/u/{{ $id }}/likes" @class([
+                        'px-4 py-2 text-sm rounded-full font-bold text-white hover:text-white',
+                        'bg-stone-900 hover:bg-fuchsia-600 active:bg-fuchsia-700' =>
+                            $mode !== 'likes',
+                        'bg-fuchsia-600' => $mode === 'likes',
+                    ])>Likes</a>
                 </div>
+
+                <hr class="mt-4" />
             </div>
 
-            {{-- feed --}}
-            <div class="mt-4 relative">
-                <hr class="mt-4" />
-
-                {{-- controls, sticky --}}
-                <div class="bg-stone-950 pt-4">
-                    <div class="flex flex-row gap-4">
-                        <a href="/u/{{ $id }}/tweets" @class([
-                            'px-4 py-2 text-sm rounded-full font-bold text-white hover:text-white',
-                            'bg-stone-900 hover:bg-fuchsia-600 active:bg-fuchsia-700' =>
-                                $mode !== 'tweets',
-                            'bg-fuchsia-600' => $mode === 'tweets',
-                        ])>Tweets</a>
-
-                        <a href="/u/{{ $id }}/replies" @class([
-                            'px-4 py-2 text-sm rounded-full font-bold text-white hover:text-white',
-                            'bg-stone-900 hover:bg-fuchsia-600 active:bg-fuchsia-700' =>
-                                $mode !== 'replies',
-                            'bg-fuchsia-600' => $mode === 'replies',
-                        ])>Replies</a>
-
-                        <a href="/u/{{ $id }}/likes" @class([
-                            'px-4 py-2 text-sm rounded-full font-bold text-white hover:text-white',
-                            'bg-stone-900 hover:bg-fuchsia-600 active:bg-fuchsia-700' =>
-                                $mode !== 'likes',
-                            'bg-fuchsia-600' => $mode === 'likes',
-                        ])>Likes</a>
-                    </div>
-
-                    <hr class="mt-4" />
-                </div>
-
-                {{-- output --}}
-                <div>
-                    @if ($mode === 'likes')
-                        <x-profile-likes :id="$id" :name="$name" />
-                    @elseif ($mode === 'replies')
-                        <x-profile-replies />
-                    @elseif ($mode === 'tweets')
-                        <x-profile-tweets :id="$id" :name="$name" />
-                    @endif
-                </div>
+            {{-- output --}}
+            <div>
+                @if ($mode === 'likes')
+                    <x-profile-likes :id="$id" :name="$name" />
+                @elseif ($mode === 'replies')
+                    <x-profile-replies />
+                @elseif ($mode === 'tweets')
+                    <x-profile-tweets :id="$id" :name="$name" />
+                @endif
             </div>
         </div>
     </div>

@@ -15,8 +15,9 @@
         integrity="sha384-L6OqL9pRWyyFU3+/bjdSri+iIphTN/bvYyM37tICVyOJkWZLpP2vGn6VUEXgzg6h" crossorigin="anonymous">
     </script>
 
-    {{-- ALPINE --}}
-    <script src="//unpkg.com/alpinejs" defer></script>
+    @once
+        <script src="/js/jquery.min.js"></script>
+    @endonce
 
     {{-- FONTAWESOME --}}
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
