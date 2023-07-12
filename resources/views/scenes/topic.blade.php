@@ -3,8 +3,8 @@
 @section('title', 'TweetHub Topics')
 
 @section('content')
-    <div class="mx-auto max-w-4xl pr-4">
-        <div class="bg-stone-900 py-8 px-4">
+    <div class="lg:my-0 lg:pr-4">
+        <div class="bg-stone-900 py-8 px-4 my-8">
             <h1 class="text-4xl text-white font-bold">Topics</h1>
             <h2 class="text-2xl text-fuchsia-500 font-bold mt-4"><span class="text-white">{{ $catchphrase }}</span>
                 #{{ $topic }}</h2>

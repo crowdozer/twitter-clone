@@ -1,4 +1,4 @@
-<div id="{{ $scope }}" data-url="/post/{{ $id }}" class="pl-2 py-4">
+<div id="{{ $scope }}" data-url="/post/{{ $id }}" class="lg:pl-2 py-4">
     <div class="flex flex-row gap-4">
         {{-- avatar --}}
         <a class="w-[48px] h-[48px] rounded-full overflow-hidden" href="/u/{{ $author_id }}">
@@ -16,7 +16,7 @@
                     <i class="fa-solid fa-circle-check text-sm align-top mt-1 ml-1 text-blue-500"></i>
                 @endif
             </div>
-            <div class="text-stone-500 text-sm flex flex-row -mt-1">
+            <div class="text-stone-500 text-sm flex flex-row flex-wrap -mt-1">
                 <span>{{ '@' }}{{ $author_id }}</span>
                 <span class="px-2">·</span>
                 <span>{{ $posted_on }}</span>

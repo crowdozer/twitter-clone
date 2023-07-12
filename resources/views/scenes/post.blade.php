@@ -3,7 +3,7 @@
 @section('title', 'TweetHub')
 
 @section('content')
-    <div class="mx-auto max-w-4xl pr-4 relative">
+    <div class="lg:pr-4 relative">
         <x-post :post="$post" />
         @if (Auth::check())
             <x-make-reply :post="$post" />

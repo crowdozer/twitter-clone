@@ -3,8 +3,8 @@
 @section('title', 'TweetHub')
 
 @section('content')
-    <div class="mx-auto max-w-4xl pr-4">
-        <div class="mt-2">
+    <div class="lg:pr-4">
+        <div class="my-8 lg:mt-2">
             <h1 class="text-2xl font-bold mb-2">What's cookin'?</h1>
             <x-make-reply />
         </div>
