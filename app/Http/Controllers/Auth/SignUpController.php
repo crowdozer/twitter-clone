@@ -11,6 +11,9 @@ use Illuminate\View\View;
 
 class SignUpController extends Controller
 {
+    /**
+     * Handles form submission
+     */
     public function post_sign_up(Request $request)
     {
         /**
@@ -59,6 +62,9 @@ class SignUpController extends Controller
          return Functions::htmx_redirect('/');
     }
 
+    /**
+     * Renders the signup page
+     */
     public function render(): View
     {
         return view('scenes.auth.sign-up', [
@@ -70,6 +76,9 @@ class SignUpController extends Controller
         ]);
     }
 
+    /**
+     * Rerenders only the login form
+     */
     private function render_form(array $data, array $errors): View
     {
         return view('components.scenes.sign-up.form', [

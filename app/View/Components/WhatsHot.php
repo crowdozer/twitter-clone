@@ -10,14 +10,16 @@ class WhatsHot extends Component
 {
     public string $topic;
     public string $activity;
+    public string $href;
 
     /**
      * Create a new component instance.
      */
-    public function __construct(string $topic, string $activity)
+    public function __construct(string $topic, string $activity, string $href)
     {
         $this->topic = $topic;
         $this->activity = $activity;
+        $this->href = $href;
     }
 
     /**

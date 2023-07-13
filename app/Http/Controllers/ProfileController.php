@@ -8,6 +8,9 @@ use Illuminate\View\View;
 
 class ProfileController extends Controller
 {
+    /**
+     * Renders the profile page
+     */
     public function render_profile(Request $request, string $id, string $mode = 'tweets'): View
     {
         $data = Functions::generate_test_profile();
@@ -21,6 +24,9 @@ class ProfileController extends Controller
         return view('scenes.profile', $data);
     }
 
+    /**
+     * Renders profile liked tweets
+     */
     public function render_likes(Request $request, string $id): View
     {
         $tweets = Functions::generate_test_posts(10);
@@ -31,6 +37,9 @@ class ProfileController extends Controller
         ]);
     }
 
+    /**
+     * Renders profile tweets
+     */
     public function render_tweets(Request $request, string $id, string $_name): View
     {
         $tweets = Functions::generate_test_posts(10);

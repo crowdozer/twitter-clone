@@ -6,7 +6,7 @@
     <div class="lg:pr-4 relative">
         <x-post :post="$post" />
         @if (Auth::check())
-            <x-make-reply :post="$post" />
+            <x-make-reply />
         @endif
         <hr />
         <div class="sticky top-0 bg-stone-950">

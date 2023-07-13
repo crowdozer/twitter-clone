@@ -2,9 +2,11 @@
     <h1 class="text-2xl font-bold mb-2"><a class="text-fuchsia-500 hover:underline" href="/">TweetHub</a></h1>
 
     @if (Auth::check())
-        <input
-            class="self-center w-full bg-transparent border border-stone-800 hover:border-fuchsia-700 rounded-full p-2 px-4"
-            placeholder="Search" />
+        <form id="search-form">
+            <input
+                class="self-center w-full bg-transparent border border-stone-800 hover:border-fuchsia-700 rounded-full p-2 px-4"
+                placeholder="Search" name='search' required />
+        </form>
 
         <div class="mt-8 flex flex-col gap-2">
             <h2 class="font-bold text-lg">Feeds</h2>
@@ -26,6 +28,16 @@
                 <i class="fas fa-users mr-1 self-center  w-8 text-center"></i>
                 Followers
             </button>
+        </div>
+
+        <div class="mt-8 flex flex-col gap-2">
+            <h2 class="font-bold text-lg">Pages</h2>
+
+            <a class="w-full rounded-full text-left p-2 px-4 bg-none  text-stone-500 hover:bg-stone-900 hover:text-white"
+                href="/about">
+                <i class="fas fa-info mr-1 self-center w-8 text-center"></i>
+                About
+            </a>
         </div>
     @else
         <div class="text-stone-500 px-4 py-2 rounded-full border border-stone-700">
@@ -64,3 +76,12 @@
         </button>
     @endif
 </div>
+
+<script>
+    $('#search-form').on('submit', function(e) {
+        e.preventDefault()
+        let value = $(this).find('input[name="search"]').val();
+
+        window.location = '/search?q=' + encodeURIComponent(value)
+    })
+</script>

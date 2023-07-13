@@ -38,7 +38,7 @@ class Post extends Component
             'comments'          => $this->post['comments'],
             'commented'         => $this->post['user_commented'],
             'views'             => $this->post['views'],
-            'posted_on'         => (new Carbon($this->post['posted_on']))->subDays(5)->diffForHumans(),
+            'posted_on'         => (new Carbon($this->post['posted_on']))->diffForHumans(),
             'hashtags'          => $this->post['hashtags'],
             'show_tags'         => true,
             'show_views'        => true,

@@ -8,6 +8,9 @@ use Illuminate\View\View;
 
 class TopicController extends Controller
 {
+    /**
+     * Renders the topics page
+     */
     public function render(Request $request, string $topic): View
     {
         return view('scenes.topic', [
@@ -17,6 +20,9 @@ class TopicController extends Controller
         ]);
     }
 
+    /**
+     * Infinitescroll
+     */
     public function render_more(Request $request, string $topic): View
     {
         return view('components.post-feed', [

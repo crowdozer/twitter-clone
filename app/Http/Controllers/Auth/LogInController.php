@@ -11,6 +11,9 @@ use Illuminate\View\View;
 
 class LogInController extends Controller
 {
+    /**
+     * Log in, then redirect or render the error message
+     */
     public function post_log_in(Request $request): View|Response
     {
         $credentials = $request->only('username', 'password');
@@ -22,6 +25,9 @@ class LogInController extends Controller
         return view('components.scenes.log-in.error');
     }
 
+    /**
+     * Renders the login page
+     */
     public function render(): View
     {
         return view('scenes.auth.log-in');

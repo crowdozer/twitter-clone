@@ -16,6 +16,9 @@ use Illuminate\Support\Facades\Route;
 // HOMEPAGE
 Route::get('/', [\App\Http\Controllers\HomepageController::class, 'render']);
 
+// SEARCH PAGE
+Route::get('/search', [\App\Http\Controllers\SearchController::class, 'render']);
+
 // REPLY TO POST PAGE
 Route::get('/post/{id}', [\App\Http\Controllers\PostController::class, 'render']);
 

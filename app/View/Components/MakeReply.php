@@ -5,22 +5,19 @@ namespace App\View\Components;
 use App\Helpers\Functions;
 use Closure;
 use Illuminate\Contracts\View\View;
+use Illuminate\Http\Request;
 use Illuminate\View\Component;
 
 class MakeReply extends Component
 {
-    public string|null $to_id;
+    public $post;
 
     /**
      * Create a new component instance.
      */
     public function __construct($post = null)
     {
-        if ($post) {
-            $this->to_id = $post['id'];
-        } else {
-            $this->to_id = null;
-        }
+        $this->post = $post;
     }
 
     /**
@@ -29,7 +26,7 @@ class MakeReply extends Component
     public function render(): View|Closure|string
     {
         return view('components.make-reply', [
-            'id' => $this->to_id,
+            'post' => $this->post,
             'quote' => Functions::quote(),
         ]);
     }

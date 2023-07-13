@@ -1,4 +1,4 @@
-<div class="flex flex-col">
+<div class="flex flex-col" id="post-feed">
     @foreach ($posts as $post)
         <x-post :post="$post" />
 

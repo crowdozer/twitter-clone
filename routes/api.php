@@ -28,20 +28,18 @@ Route::get('auth/log-out', function () {
 });
 
 /**
+ * MISC
+ */
+
+
+/**
  * POST INFINITESCROLL ENDPOINTS
  */
 
-// PROFILE LIKES
 Route::get('/posts/user/{id}/likes', [\App\Http\Controllers\PostController::class, 'render_likes']);
-
-// PROFILE TWEETS
 Route::get('/posts/user/{id}/{name}', [\App\Http\Controllers\ProfileController::class, 'render_tweets']);
-
-// TOPIC
 Route::get('/posts/topic/{topic}', [\App\Http\Controllers\TopicController::class, 'render_more']);
-
-// POST REPLIES
+Route::post('/posts/reply', [\App\Http\Controllers\PostController::class, 'reply']);
+Route::get('/posts/search', [\App\Http\Controllers\SearchController::class, 'render_more']);
 Route::get('/posts/{id}', [\App\Http\Controllers\PostController::class, 'render_more']);
-
-// GENERIC FEED
 Route::get('/posts', [\App\Http\Controllers\HomepageController::class, 'render_more']);

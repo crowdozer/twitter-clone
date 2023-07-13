@@ -10,6 +10,9 @@ use Illuminate\View\View;
 
 class HomepageController extends Controller
 {
+    /**
+     * Renders the login page, or the homepage, depending on auth state
+     */
     public function render(Request $request): View | RedirectResponse
     {
         if (!Auth::check()) {
@@ -21,6 +24,9 @@ class HomepageController extends Controller
         ]);
     }
 
+    /**
+     * Infinitescroll
+     */
     public function render_more(Request $request): View
     {
         return view('components.post-feed', [

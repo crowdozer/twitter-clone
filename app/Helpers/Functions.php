@@ -5,8 +5,16 @@ namespace App\Helpers;
 use Illuminate\Http\Response;
 use Illuminate\Support\Collection;
 
+/**
+ * Helper functions used repeatedly in the program
+ */
 class Functions
 {
+    /**
+     * Generates dummy posts
+     * @param int $count - how many posts to gen
+     * @param bool $images - whether or not to include images
+     */
     public static function generate_test_posts(int $count = 1, bool $images = true)
     {
         $posts = [];
@@ -43,6 +51,9 @@ class Functions
         return $posts;
     }
 
+    /**
+     * Generates a dummy profile
+     */
     public static function generate_test_profile()
     {
         return [
